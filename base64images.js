@@ -16,6 +16,10 @@ function base64images(ele, callback) {
     }
 
     var length = $(ele).length;
+    if (length == 0) {
+        callback();
+        return
+    }
     var loadedImgs = 0;
     function imgLoadPost() {
         loadedImgs++;
