@@ -1,0 +1,55 @@
+<!-- snapshot html page. -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>snapshot</title>
+    <style>
+        #container {
+            margin: 0 auto;
+            background: white;
+            width: 360px;
+        }
+        img {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <p>
+            <img src="img/life.jpg">
+        </p>
+        <p>
+            Life is dear.
+        </p>
+        <p>
+            <img src="img/love.png">
+        </p>
+        <p>
+            Love is dearer.
+        </p>
+        <p>
+            <img src="img/freedom.jpg">
+        </p>
+        <p>
+            Both can be given up for freedom.
+        </p>
+    </div>
+    <script src="https://cdn.staticfile.org/html2canvas/0.5.0-beta4/html2canvas.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/1.7.2/jquery.min.js"></script>
+    <script src="base64images.js"></script>
+    <script>
+        $().ready(function() {
+            base64images("img", function () {
+                html2canvas(document.getElementById("container"), {
+                    "onrendered": function(canvas) {
+                        document.getElementById("container").innerHTML='<img src="' + canvas.toDataURL() + '" />';
+                        alert('Long press on the picture to save.');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
